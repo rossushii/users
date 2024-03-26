@@ -1,0 +1,25 @@
+<div>
+  <h2>User Profile</h2>
+  <div *ngIf="userProfile">
+    <p><strong>Username:</strong> {{ userProfile.username }}</p>
+    <p><strong>First Name:</strong> {{ userProfile.firstName }}</p>
+    <p><strong>Middle Name:</strong> {{ userProfile.middleName || 'N/A' }}</p> <!-- Handle null or empty middleName -->
+    <p><strong>Last Name:</strong> {{ userProfile.lastName }}</p>
+    <p><strong>Email:</strong> {{ userProfile.email }}</p>
+    <p><strong>Birthdate:</strong> {{ userProfile.birthdate }}</p>
+    <p><strong>Interests:</strong></p>
+    <ul>
+      <li *ngFor="let interest of userProfile.interests">{{ interest }}</li>
+    </ul>
+  </div>
+  <div *ngIf="editMode">
+    <h2>Edit Interests</h2>
+    <input type="text" [(ngModel)]="newInterest">
+    <button (click)="addInterest()">Add</button>
+    <ul>
+      <li *ngFor="let interest of editedInterests">{{ interest }}</li>
+    </ul>
+    <button (click)="saveProfile()">Save</button>
+  </div>
+  <button (click)="editProfile()" *ngIf="!editMode">Edit</button>
+</div>

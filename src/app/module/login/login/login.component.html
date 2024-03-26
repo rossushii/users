@@ -1,0 +1,16 @@
+<div>
+  <h2>Login</h2>
+  <form (submit)="login()">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password">
+    </div>
+    <button type="submit">Login</button>
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </form>
+  <button routerLink="/forgotpassword">Forgot Password?</button>
+</div>
